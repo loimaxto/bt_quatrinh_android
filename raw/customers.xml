@@ -1,0 +1,94 @@
+<customers>
+    <customer>
+        <phoneNumber>0123456789</phoneNumber>
+        <createdDate>2024-11-08</createdDate>
+        <updatedPointsDate>2024-11-08</updatedPointsDate>
+        <points>100</points>
+        <note>VIP customer</note>
+    </customer>
+    <customer>
+        <phoneNumber>0987654321</phoneNumber>
+        <createdDate>2024-11-08</createdDate>
+        <updatedPointsDate>2024-11-08</updatedPointsDate>
+        <points>50</points>
+        <note>Regular customer</note>
+    </customer>
+
+    <customer>
+        <phoneNumber>0586785275</phoneNumber>
+        <createdDate>2024-11-08</createdDate>
+        <updatedPointsDate>2024-11-08</updatedPointsDate>
+        <points>20</points>
+        <note>Super vip customer</note>
+    </customer>
+    <customer>
+        <phoneNumber>1580785275</phoneNumber>
+        <createdDate>2024-11-08</createdDate>
+        <updatedPointsDate>2024-11-08</updatedPointsDate>
+        <points>50</points>
+        <note>Super vip customer</note>
+    </customer>
+    <customer>
+        <phoneNumber>2580785275</phoneNumber>
+        <createdDate>2024-11-08</createdDate>
+        <updatedPointsDate>2024-11-08</updatedPointsDate>
+        <points>50</points>
+        <note>Super vip customer</note>
+    </customer>
+<!--    <customer>-->
+<!--        <phoneNumber>3580785275</phoneNumber>-->
+<!--        <createdDate>2024-11-08</createdDate>-->
+<!--        <updatedPointsDate>2024-11-08</updatedPointsDate>-->
+<!--        <points>50</points>-->
+<!--        <note>Super vip customer</note>-->
+<!--    </customer>-->
+<!--    <customer>-->
+<!--        <phoneNumber>4580785275</phoneNumber>-->
+<!--        <createdDate>2024-11-08</createdDate>-->
+<!--        <updatedPointsDate>2024-11-08</updatedPointsDate>-->
+<!--        <points>50</points>-->
+<!--        <note>Super vip customer</note>-->
+<!--    </customer>-->
+<!--    <customer>-->
+<!--        <phoneNumber>5580785275</phoneNumber>-->
+<!--        <createdDate>2024-11-08</createdDate>-->
+<!--        <updatedPointsDate>2024-11-08</updatedPointsDate>-->
+<!--        <points>50</points>-->
+<!--        <note>Super vip customer</note>-->
+<!--    </customer>-->
+<!--    <customer>-->
+<!--        <phoneNumber>6580785275</phoneNumber>-->
+<!--        <createdDate>2024-11-08</createdDate>-->
+<!--        <updatedPointsDate>2024-11-08</updatedPointsDate>-->
+<!--        <points>50</points>-->
+<!--        <note>Super vip customer</note>-->
+<!--    </customer>-->
+<!--    <customer>-->
+<!--        <phoneNumber>7580785275</phoneNumber>-->
+<!--        <createdDate>2024-11-08</createdDate>-->
+<!--        <updatedPointsDate>2024-11-08</updatedPointsDate>-->
+<!--        <points>50</points>-->
+<!--        <note>Super vip customer</note>-->
+<!--    </customer>-->
+<!--    <customer>-->
+<!--        <phoneNumber>8580785275</phoneNumber>-->
+<!--        <createdDate>2024-11-08</createdDate>-->
+<!--        <updatedPointsDate>2024-11-08</updatedPointsDate>-->
+<!--        <points>50</points>-->
+<!--        <note>Super vip customer</note>-->
+<!--    </customer>-->
+<!--    <customer>-->
+<!--        <phoneNumber>9580785275</phoneNumber>-->
+<!--        <createdDate>2024-11-08</createdDate>-->
+<!--        <updatedPointsDate>2024-11-08</updatedPointsDate>-->
+<!--        <points>50</points>-->
+<!--        <note>Super vip customer</note>-->
+<!--    </customer>-->
+<!--    <customer>-->
+<!--        <phoneNumber>9580785275</phoneNumber>-->
+<!--        <createdDate>2024-11-08</createdDate>-->
+<!--        <updatedPointsDate>2024-11-08</updatedPointsDate>-->
+<!--        <points>50</points>-->
+<!--        <note>Super vip customer</note>-->
+<!--    </customer>-->
+</customers>

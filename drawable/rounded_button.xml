@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Đặt màu nền cho nút -->
+    <solid android:color="#CCCCFF" />
+
+    <!-- Bo tròn góc -->
+    <corners android:radius="50dp" /> <!-- Thay đổi giá trị này để điều chỉnh độ bo tròn -->
+
+
+
+    <!-- Tạo hiệu ứng khi nhấn (tuỳ chọn) -->
+    <item android:state_pressed="true">
+        <solid android:color="#666666" /> <!-- Màu nền khi nút được nhấn -->
+    </item>
+</shape>

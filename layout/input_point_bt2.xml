@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20px"
+    android:background="#222222">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="INPUT POINT"
+        android:gravity="center"
+        android:textSize="100px"
+        android:textColor="#BBBBBB"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Customer's phone"
+        android:textColor="#BBBBBB"
+        android:textSize="70px"
+        android:padding="20px"
+        />
+
+    <!-- EditText với gạch dưới màu trắng -->
+    <EditText
+        android:id="@+id/numberphope"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:inputType="number"
+        android:ems="100"
+        android:textSize="70px"
+        android:textColor="#BBBBBB"
+        android:textColorHint="#BBBBBB"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Current point"
+        android:textColor="#BBBBBB"
+        android:textSize="70px"
+        android:padding="20px"
+        />
+
+    <!-- TextView với nội dung mờ đi -->
+    <TextView
+        android:id="@+id/curr_point"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="100"
+        android:text="0"
+        android:textSize="70px"
+        android:textColor="#BBBBBB"
+        android:alpha="0.5"
+        android:padding="10px"
+    />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Input new point"
+        android:textColor="#BBBBBB"
+        android:textSize="70px"
+        android:padding="20px"
+        />
+
+    <EditText
+        android:id="@+id/new_point"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:inputType="number"
+        android:ems="100"
+        android:textSize="70px"
+        android:textColor="#BBBBBB"
+        android:textColorHint="#BBBBBB"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Note"
+        android:textColor="#BBBBBB"
+        android:textSize="70px"
+        android:padding="20px"
+        />
+
+    <EditText
+        android:id="@+id/note"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:ems="100"
+        android:inputType="textMultiLine"
+        android:minLines="4"
+        android:maxLines="8"
+        android:gravity="top|start"
+        android:scrollbars="vertical"
+        android:textSize="70px"
+        android:textColor="#BBBBBB"
+        android:textColorHint="#BBBBBB"
+        android:padding="10px"
+    />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="20px"
+        >
+        <Button
+            android:id="@+id/save_btn"
+            android:layout_width="450px"
+            android:layout_height="match_parent"
+            android:text="Save"
+            android:background="@drawable/rounded_button"
+            />
+        <Button
+            android:id="@+id/saveAnext"
+            android:layout_width="450px"
+            android:layout_height="match_parent"
+            android:text="Save and Next"
+            android:background="@drawable/rounded_button"
+            android:layout_marginLeft="20px" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="50px">
+
+        <Button
+            android:id="@+id/import_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:background="@drawable/rounded_button"
+            android:text="IMPORT" />
+
+        <Button
+            android:id="@+id/export_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:layout_marginLeft="20px"
+            android:background="@drawable/rounded_button"
+            android:text="EXPORT" />
+        <Button
+            android:id="@+id/logout_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:layout_marginLeft="20px"
+            android:background="@drawable/rounded_button"
+            android:text="LOGOUT" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#CCCCCC"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:gravity="bottom">
+
+    <Button
+        android:id="@+id/input_btn"
+        android:layout_width="330px"
+        android:layout_height="120px"
+        android:text="INPUT"
+        android:background="@drawable/rounded_button"
+        android:layout_marginLeft="20px" />
+
+    <Button
+        android:id="@+id/use_btn"
+        android:layout_width="330px"
+        android:layout_height="120px"
+        android:text="USE"
+        android:background="@drawable/rounded_button"
+        android:layout_marginLeft="20px" />
+
+    <Button
+        android:id="@+id/list_btn"
+        android:layout_width="325px"
+        android:layout_height="120px"
+        android:text="LIST"
+        android:background="@drawable/rounded_button"
+        android:layout_marginLeft="20px" />
+</LinearLayout>
+
+</LinearLayout>

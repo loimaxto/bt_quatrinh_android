@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#33CCFF"
+    >
+
+     <TextView
+         android:layout_width="match_parent"
+         android:layout_height="200px"
+         android:background="#444444"
+         android:text="LOGIN"
+         android:textColor="#FFFF99"
+         android:gravity="center"
+         android:textSize="100px"
+         android:padding="16dp"
+         />
+
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="400px"
+    android:src="@drawable/img"
+    android:padding="16dp"
+    />
+
+
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="Username"
+         android:textSize="80px"/>
+     <EditText
+         android:id="@+id/username_txt"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:ems="100"
+         android:inputType="text"
+         android:textSize="100px"/>
+
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="Password"
+         android:textSize="80px"
+         android:layout_marginTop="20dp"
+         />
+
+     <EditText
+         android:id="@+id/password_txt"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:ems="100"
+         android:inputType="numberPassword"
+         android:textSize="100px"
+        />
+
+     <Button
+         android:id="@+id/login_btn"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="5px"
+         android:text="DO LOGIN"
+         android:background="@drawable/rounded_button"
+         android:textSize="70px"/>
+
+     <TextView
+         android:id="@+id/change_pass_btn"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:autoLink="web"
+         android:text="change password"
+         android:gravity="end"
+         android:textSize="50px"
+         android:layout_marginRight="50px"
+         android:layout_marginTop="15px"
+         android:textColor="#0000EE"
+         />
+</LinearLayout>

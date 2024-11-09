@@ -1,4 +1,4 @@
-package com.example.bt2;
+package com.example.bt2.java;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.bt2.R;
 import com.example.bt2.model.Customer;
 import com.example.bt2.model.CustomerManager;
 
@@ -151,6 +152,8 @@ public class use_point_bt2 extends AppCompatActivity {
                 // Cập nhật điểm mới
                 if (newPoint != 0) {
                     customerManager.use(newPoint, phone_text);  // tru điểm mới
+                    Intent use_point = new Intent(use_point_bt2.this, danh_sach_kh_bt2.class);
+                    startActivity(use_point);  // Thêm startActivity để chuyển trang
                 }
 
                 // Cập nhật ghi chú mới nếu có

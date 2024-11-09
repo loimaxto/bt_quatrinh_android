@@ -1,7 +1,6 @@
-package com.example.bt2;
+package com.example.bt2.java;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,11 +11,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.bt2.R;
 import com.example.bt2.model.Customer;
 import com.example.bt2.model.CustomerManager;
 import com.example.bt2.ui.theme.XmlParser;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -165,6 +165,8 @@ public class input_point_bt2 extends AppCompatActivity {
                 // Cập nhật điểm mới
                 if (newPoint != 0) {
                     customerManager.plus(newPoint, phone_text);  // Cộng điểm mới
+                    Intent use_point = new Intent(input_point_bt2.this, use_point_bt2.class);
+                    startActivity(use_point);  // Thêm startActivity để chuyển trang
                 }
 
                 // Cập nhật ghi chú mới nếu có

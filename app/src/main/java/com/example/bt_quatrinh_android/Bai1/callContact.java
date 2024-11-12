@@ -4,10 +4,12 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -51,6 +53,19 @@ public class callContact extends AppCompatActivity {
             });
         }
 
+        lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Lấy tên của phần tử được nhấn
+                String selectedItem = list.get(position).getName();
+                String contactId = list.get(position).contactID();
+                Uri contactUri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_URI, contactId);
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(contactUri);
+                startActivity(intent);
+                Toast.makeText(callContact.this, "Bạn đã nhấn vào: " + selectedItem, Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
@@ -73,7 +88,7 @@ public class callContact extends AppCompatActivity {
                     do{
                         int phoneIndex = phoneCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
                         String phoneNumber = phoneCursor.getString(phoneIndex);
-                        contacts.add(new DoiTuong(phoneNumber,contactName));
+                        contacts.add(new DoiTuong(phoneNumber,contactName,contactId));
                     }while(phoneCursor.moveToNext());
                 }
                 phoneCursor.close();

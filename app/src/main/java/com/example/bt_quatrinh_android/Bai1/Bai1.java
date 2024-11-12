@@ -30,7 +30,8 @@ public class Bai1 extends AppCompatActivity {
         callQR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent itCallContact = new Intent(Bai1.this,QR.class);
+                startActivity(itCallContact);
             }
         });
     }

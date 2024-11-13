@@ -17,7 +17,7 @@
         <!-- thêm thẻ provider vào-->
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.yourapp.fileprovider"
+            android:authorities="com.example.bt2.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -25,7 +25,12 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-    <!--Những activity cần thêm-->
+
+
+
+
+
+        <!--Những activity cần thêm-->
         <activity android:name=".java.login_bt2"
             android:exported="true"
             android:label="@string/app_name"
@@ -36,8 +41,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".java.input_point_bt2"/>
         <activity android:name=".java.change_password_bt2" />
-        <activity android:name=".java.input_point_bt2" />
         <activity android:name=".java.use_point_bt2" />
         <activity android:name=".java.danh_sach_kh_bt2" />
 

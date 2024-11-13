@@ -15,13 +15,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.bt2.R;
 import com.example.bt2.model.Customer;
 import com.example.bt2.model.CustomerManager;
+import com.example.bt2.provider.DatabaseManager;
 
 import java.util.List;
 
 public class use_point_bt2 extends AppCompatActivity {
+
+    private DatabaseManager dbManager;  // Quản lý cơ sở dữ liệu SQLite
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dbManager = new DatabaseManager(this);
+
         setContentView(R.layout.use_point_bt2);
 
         EditText phonenumber = findViewById(R.id.numberphope);
@@ -29,7 +36,6 @@ public class use_point_bt2 extends AppCompatActivity {
         EditText usedPointEditText = findViewById(R.id.used_point);
         EditText noteEditText = findViewById(R.id.note);
 
-        CustomerManager customerManager = new CustomerManager(this);
 
         // Lắng nghe sự thay đổi trong EditText
         phonenumber.addTextChangedListener(new TextWatcher() {
@@ -42,7 +48,8 @@ public class use_point_bt2 extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
                 String phoneNumber = charSequence.toString().trim();
-                List<Customer> customers = customerManager.getCustomers();
+                List<Customer> customers = dbManager.getAllCustomers();
+
 
                 boolean exist = false;
 
@@ -60,56 +67,68 @@ public class use_point_bt2 extends AppCompatActivity {
             }
         });
 
-        // Sự kiện cho nút save
+// Sự kiện cho nút save
         Button save_btn = findViewById(R.id.save_btn);
         save_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 String new_note = noteEditText.getText().toString().trim();
                 String newPointStr = usedPointEditText.getText().toString().trim();
                 String phone_text = phonenumber.getText().toString().trim();
 
-                // Kiểm tra nếu không có số điện thoại được nhập
-                if (phone_text.isEmpty()) {
+                // Check if phone number exists in the database
+                List<Customer> customers = dbManager.getAllCustomers();
+                boolean phoneExists = false;
+                for (Customer customer : customers) {
+                    if (phone_text.equals(customer.getPhoneNumber())) {
+                        phoneExists = true;
+                        break;
+                    }
+                }
+
+                // Check if phone number is entered
+                if (phone_text.isEmpty() || !phoneExists) {
                     Toast.makeText(use_point_bt2.this, "Please enter a valid phone number", Toast.LENGTH_SHORT).show();
-                    return;  // Dừng lại nếu số điện thoại trống
+                    return;  // Stop if the phone number is empty
                 }
 
                 int newPoint = 0;
 
-                // Kiểm tra nếu trường điểm mới (newPoint) có giá trị và chuyển nó thành số nguyên
+                // Parse newPoint if available
                 if (!newPointStr.isEmpty()) {
                     try {
-                        newPoint = Integer.parseInt(newPointStr);  // Chuyển thành int
+                        newPoint = Integer.parseInt(newPointStr);  // Convert to int
                     } catch (NumberFormatException e) {
                         Toast.makeText(use_point_bt2.this, "Invalid point value", Toast.LENGTH_SHORT).show();
-                        return;  // Dừng nếu điểm nhập không hợp lệ
+                        return;  // Stop if the entered points are invalid
                     }
                 }
 
-                // Kiểm tra nếu cả điểm mới và ghi chú đều trống
+                // Check if both note and points are empty
                 if (new_note.isEmpty() && newPoint == 0) {
                     Toast.makeText(use_point_bt2.this, "New points and note are currently empty", Toast.LENGTH_SHORT).show();
-                    return;  // Dừng nếu không có thông tin để cập nhật
+                    return;  // Stop if no information to update
                 }
 
-                // Cập nhật điểm mới
+                boolean isUpdated = false;  // Flag to check if anything was updated
+
+                // Update points if available
                 if (newPoint != 0) {
-                    customerManager.use(newPoint, phone_text);  // tru điểm mới
+                    dbManager.minusPoint(use_point_bt2.this,phone_text, newPoint);  // Cập nhật điểm
+                    isUpdated = true;  // Set flag to true if points are updated
                 }
 
-                // Cập nhật ghi chú mới nếu có
+                // Update note if available
                 if (!new_note.isEmpty()) {
-                    List<Customer> customers = customerManager.getCustomers();
-                    for (Customer customer : customers) {
-                        if (customer.getPhoneNumber().equals(phone_text)) {
-                            customer.setNote(new_note);  // Cập nhật ghi chú
-                            Toast.makeText(use_point_bt2.this, "Successfully updated", Toast.LENGTH_SHORT).show();
-                            customerManager.saveCustomers(customers);  // Lưu lại thay đổi
-                            break;
-                        }
-                    }
+                    dbManager.updateNote(phone_text, new_note);  // Cập nhật ghi chú
+                    isUpdated = true;  // Set flag to true if note is updated
+                }
+
+                // Check if any update was performed
+                if (isUpdated) {
+                    Toast.makeText(use_point_bt2.this, "Successfully updated", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(use_point_bt2.this, "No changes were made", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -120,56 +139,68 @@ public class use_point_bt2 extends AppCompatActivity {
         saveAnext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 String new_note = noteEditText.getText().toString().trim();
                 String newPointStr = usedPointEditText.getText().toString().trim();
                 String phone_text = phonenumber.getText().toString().trim();
 
-                // Kiểm tra nếu không có số điện thoại được nhập
-                if (phone_text.isEmpty()) {
+                // Check if phone number exists in the database
+                List<Customer> customers = dbManager.getAllCustomers();
+                boolean phoneExists = false;
+                for (Customer customer : customers) {
+                    if (phone_text.equals(customer.getPhoneNumber())) {
+                        phoneExists = true;
+                        break;
+                    }
+                }
+
+                // Kiểm tra nếu số điện thoại không được nhập
+                if (phone_text.isEmpty() || !phoneExists) {
                     Toast.makeText(use_point_bt2.this, "Please enter a valid phone number", Toast.LENGTH_SHORT).show();
-                    return;  // Dừng lại nếu số điện thoại trống
+                    return;  // Dừng lại nếu số điện thoại rỗng
                 }
 
                 int newPoint = 0;
 
-                // Kiểm tra nếu trường điểm mới (newPoint) có giá trị và chuyển nó thành số nguyên
+                // Chuyển đổi giá trị newPoint nếu có
                 if (!newPointStr.isEmpty()) {
                     try {
-                        newPoint = Integer.parseInt(newPointStr);  // Chuyển thành int
+                        newPoint = Integer.parseInt(newPointStr);  // Chuyển thành số nguyên
                     } catch (NumberFormatException e) {
                         Toast.makeText(use_point_bt2.this, "Invalid point value", Toast.LENGTH_SHORT).show();
-                        return;  // Dừng nếu điểm nhập không hợp lệ
+                        return;  // Dừng lại nếu giá trị điểm không hợp lệ
                     }
                 }
 
-                // Kiểm tra nếu cả điểm mới và ghi chú đều trống
+                // Kiểm tra nếu cả ghi chú và điểm đều trống
                 if (new_note.isEmpty() && newPoint == 0) {
                     Toast.makeText(use_point_bt2.this, "New points and note are currently empty", Toast.LENGTH_SHORT).show();
-                    return;  // Dừng nếu không có thông tin để cập nhật
+                    return;  // Dừng lại nếu không có thông tin để cập nhật
                 }
 
-                // Cập nhật điểm mới
+                boolean isUpdated = false;  // Biến để kiểm tra nếu có cập nhật nào
+
+                // Cập nhật điểm nếu có
                 if (newPoint != 0) {
-                    customerManager.use(newPoint, phone_text);  // tru điểm mới
-                    Intent use_point = new Intent(use_point_bt2.this, danh_sach_kh_bt2.class);
-                    startActivity(use_point);  // Thêm startActivity để chuyển trang
+
+                    dbManager.minusPoint(use_point_bt2.this,phone_text, newPoint);  // Cập nhật điểm
+                    isUpdated = true;  // Đánh dấu là đã cập nhật
                 }
 
-                // Cập nhật ghi chú mới nếu có
+                // Cập nhật ghi chú nếu có
                 if (!new_note.isEmpty()) {
-                    List<Customer> customers = customerManager.getCustomers();
-                    for (Customer customer : customers) {
-                        if (customer.getPhoneNumber().equals(phone_text)) {
-                            customer.setNote(new_note);  // Cập nhật ghi chú
-                            customer.setUpdatedDate(customerManager.getCurrentDateTime());
-                            Toast.makeText(use_point_bt2.this, "Successfully updated", Toast.LENGTH_SHORT).show();
-                            customerManager.saveCustomers(customers);  // Lưu lại thay đổi
-                            Intent use_point = new Intent(use_point_bt2.this, danh_sach_kh_bt2.class);
-                            startActivity(use_point);  // Thêm startActivity để chuyển trang
-                            break;
-                        }
-                    }
+                    dbManager.updateNote(phone_text, new_note);  // Cập nhật ghi chú
+                    isUpdated = true;  // Đánh dấu là đã cập nhật
+                }
+
+                // Kiểm tra nếu có thay đổi nào được thực hiện
+                if (isUpdated) {
+                    Toast.makeText(use_point_bt2.this, "Successfully updated", Toast.LENGTH_SHORT).show();
+
+                    // Chuyển đến màn hình tiếp theo
+                    Intent use_point = new Intent(use_point_bt2.this, danh_sach_kh_bt2.class);
+                    startActivity(use_point);
+                } else {
+                    Toast.makeText(use_point_bt2.this, "No changes were made", Toast.LENGTH_SHORT).show();
                 }
             }
         });

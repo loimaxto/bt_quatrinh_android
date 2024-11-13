@@ -1,4 +1,4 @@
-package com.example.bt2;
+package com.example.bt2.java;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -13,16 +13,22 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.bt2.R;
 import com.example.bt2.model.Customer;
 import com.example.bt2.model.CustomerManager;
+import com.example.bt2.provider.DatabaseManager;
 
 import java.util.List;
 
 public class danh_sach_kh_bt2 extends AppCompatActivity {
+
+    private DatabaseManager dbManager;  // Quản lý cơ sở dữ liệu SQLite
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.danh_sach_kh_bt2);
+
         displayCustomersFromSharedPreferences(); //lấy ra danh sách khách hàng
 
 
@@ -54,8 +60,8 @@ public class danh_sach_kh_bt2 extends AppCompatActivity {
     }
 
     private void displayCustomersFromSharedPreferences() {
-        CustomerManager customerManager = new CustomerManager(this);
-        List<Customer> customers = customerManager.getCustomers(); // Lấy danh sách khách hàng
+        dbManager = new DatabaseManager(this);
+        List<Customer> customers = dbManager.getAllCustomers(); // Lấy danh sách khách hàng
 
         LinearLayout parentLayout = findViewById(R.id.parent_layout); // Parent layout ID
 
@@ -135,7 +141,7 @@ public class danh_sach_kh_bt2 extends AppCompatActivity {
                     String phoneNumberToDelete = (String) v.getTag(); // Lấy số điện thoại từ `tag`
 
                     // Xóa khách hàng khỏi SharedPreferences
-                    customerManager.remove(phoneNumberToDelete);
+                    dbManager.deleteCustomer(phoneNumberToDelete);
 
                     // Cập nhật lại giao diện
                     parentLayout.removeView(customerLayout);

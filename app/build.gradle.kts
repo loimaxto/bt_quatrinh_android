@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.bt_quatrinh_android"
-        minSdk = 34
+        minSdk = 31
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"

@@ -152,33 +152,7 @@ public class bt3_main extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @SuppressLint("ScheduleExactAlarm")
-    private void setNotification(int hour, int minute) {
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, hour);
-        calendar.set(Calendar.MINUTE, minute);
-        calendar.set(Calendar.SECOND, 0);
-
-        Intent intent = new Intent(this, ReminderReceiver.class);
-        intent.putExtra("message", "Đến giờ chụp ảnh rồi");
-
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE); //PendingIntent.FLAG_UPDATE_CURRENT
-
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-
-        if (alarmManager == null) {
-            Toast.makeText(this, hour + ":" + minute, Toast.LENGTH_SHORT).show();
-            return;
-        }
-        try {
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-        } catch (Exception e) {
-//            e.getStackTrace();
-        }
-        Toast.makeText(this, "Thông báo đã được thiết lập", Toast.LENGTH_SHORT).show();
-
-    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

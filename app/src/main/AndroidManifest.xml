@@ -12,7 +12,7 @@
 
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -22,7 +22,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bt_quatrinh_android"
-        tools:targetApi="31">
+        >
 
         <activity
             android:name=".BT3.bt3_main"
@@ -33,13 +33,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".BT3.SetReminderActivity"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
         </activity>
-
+        <receiver android:name=".BT3.AlertReceiver" />
     </application>
 
 </manifest>

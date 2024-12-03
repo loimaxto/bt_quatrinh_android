@@ -90,6 +90,7 @@ public class bt3_main extends AppCompatActivity {
                     break;
             }
         }
+        refreshImageList();
     }
 
     private void saveImage(Bitmap image) {

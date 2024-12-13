@@ -25,6 +25,14 @@ public class SetReminderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bt3_timepicker);
 
+        //huy thong tbao
+        Intent intent = getIntent();
+        if (intent != null && "CANCEL_ALERT".equals(intent.getAction())) {
+            cancelNotification();
+            finish(); // Đóng activity sau khi hủy
+            return;
+        }
+
         TimePicker timePicker = findViewById(R.id.timePicker);
         Button setAlertButton = findViewById(R.id.btnSetReminder);
 
@@ -54,6 +62,18 @@ public class SetReminderActivity extends AppCompatActivity {
         // Create Notification Channel (for Android 8.0+)
         createNotificationChannel();
 
+    }
+
+    public void cancelNotification() {
+        Intent intent = new Intent(this, AlertReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        if (alarmManager != null) {
+            alarmManager.cancel(pendingIntent); // Hủy báo thức
+        }
+
+        Toast.makeText(this, "Nhắc nhở đã được hủy", Toast.LENGTH_SHORT).show();
     }
 
     @SuppressLint("ScheduleExactAlarm")

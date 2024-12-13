@@ -7,7 +7,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.bt_quatrinh_android"
+        applicationId = "com.example.bt_quatrinh_android_bt3_fixed"
         minSdk = 31
         targetSdk = 34
         versionCode = 1

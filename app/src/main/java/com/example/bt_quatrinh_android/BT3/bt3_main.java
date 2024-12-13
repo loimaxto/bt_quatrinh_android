@@ -84,6 +84,9 @@ public class bt3_main extends AppCompatActivity {
                     if (data != null && data.getExtras() != null) {
                         Bitmap image = (Bitmap) data.getExtras().get("data");
                         saveImage(image);
+                        Intent cancelIntent = new Intent(this, SetReminderActivity.class);
+                        cancelIntent.setAction("CANCEL_ALERT");
+                        startActivity(cancelIntent);
                     }
                     break;
                 default:
